@@ -1,8 +1,8 @@
 import tkinter as tk
 import random as rd
 
-LARGEUR = 600
-HAUTEUR = 600
+LARGEUR = 1600
+HAUTEUR = 900
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg="black", width=LARGEUR, height=HAUTEUR)
 canvas.grid()
