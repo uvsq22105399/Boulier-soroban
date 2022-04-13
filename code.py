@@ -8,8 +8,8 @@ HAUTEUR = 600
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg="black", width=LARGEUR, height=HAUTEUR)
 
-for i in range (23):
-    c = LARGEUR//23
+for i in range (24):
+    c = LARGEUR//24
     line = canvas.create_line(i*c,10,i*c,600,fill='red',width=5)
 
 
