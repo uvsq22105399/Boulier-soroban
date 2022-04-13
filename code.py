@@ -21,7 +21,16 @@ line5 = canvas.create_line(LARGEUR,0,LARGEUR,HAUTEUR,fill='red',width=10)
 
 
 
+for j in range (0, 1120, 50) :
+    for i in range (40,560,112):
+        rond= canvas.create_oval((35+j,30+i),(65+j,60+i),fill='red')
+
+
+ligne_separation= canvas.create_line((10,150),(1195,150),fill='white',width=10)
+
+
+
 canvas.grid()
 canvas.pack()
 
-tk.mainloop()
+racine.mainloop()
