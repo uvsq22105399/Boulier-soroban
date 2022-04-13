@@ -10,12 +10,12 @@ liste_boules = []
 racine = tk.Tk()
 canvas = tk.Canvas(racine, bg="black", width=LARGEUR, height=HAUTEUR)
 
-for i in range (24):
+for i in range (1, 24):
     c = LARGEUR//24
     line = canvas.create_line(i*c,10,i*c,600,fill='red',width=5)
-    for j in range(6):
+    for j in range(1, 6):
         h = HAUTEUR//6
-        boule = canvas.create_oval((i-30,h-30),(i+30,h+30),fill='red')
+        boule = canvas.create_oval((i*c-20,j*h-20),(i*c+20,j*h+20),fill='red')
         liste_boules.append(boule)
 
 
