@@ -73,7 +73,7 @@ def creer_colonnes():
     """Créer les colonnes du boulier dans le canevas
     * création de lignes verticales à intervalles réguliers
     * mémorisation des colonnes dans la liste : "liste_ligne" """
-    global nb_colonnes, line, liste_ligne
+    global nb_colonnes, line, liste_ligne, LARGEUR
     for i in range (1,nb_colonnes+1):
         c = LARGEUR//(nb_colonnes+1)
         line = canvas.create_line(i*c,10,i*c,HAUTEUR,fill="red",width=5)
@@ -82,17 +82,16 @@ def creer_colonnes():
 # Option de réinitialisation
 def reinitialiser() : 
     """Réinitialise le boulier : toutes les boules sont désactivées"""
-    global boule, line, liste_ligne, nb_total_de_boules, liste_position_boules
-    i = nb_total_de_boules-1
-    while i != (-1):
-        boule=liste_boules[i]
-        canvas.delete(boule)
-        del liste_boules[i]
-        del liste_coordonnee[i]
-        del liste_position_boules[i]
-        del liste_boule_active[i]
-        i-=1
+    global boule, line, liste_ligne, nb_total_de_boules, liste_position_boules, LARGEUR, nb_colonnes, liste_boules, liste_coordonnee, liste_boule_active
+    supprime_boules()
     supprime_colonnes()
+    liste_boules=[]
+    liste_coordonnee=[]
+    liste_ligne=[]
+    liste_boule_active=[]
+    liste_position_boules=[]
+    LARGEUR=1200
+    nb_colonnes=23
     creer_colonnes()
     creer_boules()
 
@@ -242,11 +241,16 @@ def ajoute_colonne():
     supprime_colonnes()
     nb_colonnes+=1
     LARGEUR+=23
-    liste_boules=[]
-    liste_coordonnee=[]
-    liste_ligne=[]
-    liste_boule_active=[]
-    liste_position_boules=[]
+    if (len(liste_boules)!=0) :
+        liste_boules=[]
+    if (len(liste_coordonnee)!=0) :
+        liste_coordonnee=[]
+    if (len(liste_boule_active)!=0) :
+        liste_boule_active=[]
+    if (len(liste_ligne)!=0) :
+        liste_ligne=[]
+    if (len(liste_position_boules)!=0) :
+        liste_position_boules=[]
     creer_colonnes()
     creer_boules()
 
@@ -280,7 +284,7 @@ def supprime_boules():
 
 def supprime_colonnes():
     """Supprime toutes les colonnes du boulier une à une"""
-    global line, liste_ligne, nb_colonnes
+    global liste_ligne, nb_colonnes, line
     for i in range(nb_colonnes):
         line=liste_ligne[i]
         canvas.delete(line)
