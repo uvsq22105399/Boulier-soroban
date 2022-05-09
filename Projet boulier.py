@@ -297,58 +297,28 @@ def variateur_vitesse():
     v=int(input("Choisir une vitesse de déplacement des boules"))
 
 
-def opérations():
-    global dy,boule, liste_coordonnees_initiales, id_after_unaire, liste_coordonnee, liste_boules, v, n, premier, deuxieme
-    
-    n=0
-    m=0
-    reinitialiser()
-    premier= int(input('premier chiffre'))
-    signe= input('signe')
-    deuxieme= int(input('deuxième chiffre'))
-    if signe=='+':
-        opération_addition()
 
-    if signe=='*':
-        opération_multiplication()
-        
+
 
 def opération_addition(premier,deuxieme):
-    global dy,boule, liste_coordonnees_initiales, id_after_unaire, liste_coordonnee, liste_boules, v, n, premier, deuxieme
-    
+    global dy,boule, liste_coordonnees_initiales, id_after_unaire, liste_coordonnee, liste_boules, v
+    premier=int(input('premier chiffre'))
        
     premier_str= str(premier)
     liste= list(premier_str)
     for i in range (0,len(premier_str)+1,-1):
         if int(liste[i])>5:
-            mouvement_boule_quinaire(i)
-            nmbre_unaire= int(liste[i])-5
-            mouvement_boule_unaire(colonne i,déplacement de nmbre_unaire boules)
+            mouvement_boule_quinaire(2)
         else:
-            mouvement_boule_unaire(colonne i, déplacement de int(liste[i]) boules)
+            mouvement_boule_unaire(2, -dy)
 
     
     somme= premier+deuxieme
     somme_str= str(somme)
-    liste2= list(somme_str)
-    for i in range (0,len(somme_str)+1,-1):
-        if int(liste2[i])>5:
-            mouvement_boule_quinaire(i)
-            nmbre_unaire2= int(liste[i])-5
-            mouvement_boule_unaire(colonne i,déplacement de nmbre_unaire2 boules)
-        else:
-            mouvement_boule_unaire(colonne i, déplacement de int(liste2[i]) boules)
 
 
 
 
-
-
-
-def opération_multiplication(premier,deuxieme):
-    global dy,boule, liste_coordonnees_initiales, id_after_unaire, liste_coordonnee, liste_boules, v, n, premier, deuxieme
-
-    
 
 
 
@@ -402,7 +372,7 @@ bouton_reinitialiser=tk.Button(racine, text="Réinitialiser", activebackground="
 bouton_colonne=tk.Button(racine, text="Ajout d'une colonne", activebackground="grey", command=ajoute_colonne)
 bouton_colonne_1=tk.Button(racine, text="Enlève une colonne", activebackground="grey", command=enlève_colonne)
 bouton_vitesse=tk.Button(racine, text="Variation vitesse", activebackground="grey", command=variateur_vitesse)
-bouton_opérations=tk.Button(racine, text="Opérations", activebackground="grey", command=opérations)
+bouton_opérations=tk.Button(racine, text="Opérations", activebackground="grey")
 # Positionnement des widgets
 canvas.grid(column=0, row=0, columnspan=5)
 #label.grid(row=0, column=0, columnspan=2)
